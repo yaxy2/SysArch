@@ -27,7 +27,7 @@ client.on_publish = on_publish
 
 client.loop_start()
 
-for x in range(0,10):
+while True:
     temperature = rd.random()
     sleep(1)
     print(temperature)
