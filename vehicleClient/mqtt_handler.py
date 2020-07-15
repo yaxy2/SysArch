@@ -4,6 +4,7 @@ from time import sleep
 import random as rd
 
 from dataStruct import DataStruct
+from json_handler import JSONDumper
 
 ds = DataStruct()
 
@@ -24,20 +25,15 @@ def on_publish(client, userdata, rc):
 	print("data published \n")
 	pass
 
-
 client.on_connect = on_connect
 client.on_publish = on_publish
-
 
 client.loop_start()
 
 while True:
-    temperature = rd.random()
     sleep(1)
     print(temperature)
-    client.publish("/SysArch/V1/someTest", temperature)
-
+    ds.getData()
+    client.publish("/SysArch/V1/someTest", JSONDumper.generate_json(ds))
 
 client.loop_stop()
-
-
