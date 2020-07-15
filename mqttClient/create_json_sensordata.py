@@ -37,20 +37,24 @@ ts_gyro = 952345234523563
 
 # Define JSON and pass values
 
+
+public class JSON_dumper:
+  def generateJSON(sensorData):
+
 sensor_data =   {
                     "SensorValue1": [
-                        {"name":"LIDAR", "timestamp":ts_lidar, "value":lidar},
-                        {"name":"Humidity", "timestamp":ts_humidity, "value":humidity},
-                        {"name":"SteeringAngle","timestamp":ts_steering_angle, "value":steering_angle},
-                        {"name":"Temperature", "timestamp":ts_temperature, "value":temperature},
-                        {"name":"Speed", "timestamp":ts_speed, "value":speed},
-                        {"name":"Altimeter", "timestamp":ts_altimeter, "value":altimeter}
+                        {"name":"LIDAR", "timestamp":ts_lidar, "value":sensorData.lidar},
+                        {"name":"Humidity", "timestamp":ts_humidity, "value":sensorData.humidity},
+                        {"name":"SteeringAngle","timestamp":ts_steering_angle, "value":sensorData.steering_angle},
+                        {"name":"Temperature", "timestamp":ts_temperature, "value":sensorData.temperature},
+                        {"name":"Speed", "timestamp":ts_speed, "value":sensorData.speed},
+                        {"name":"Altimeter", "timestamp":ts_altimeter, "value":sensorData.altimeter}
                     ],
 
                     "SensorValue3": [
-                        {"name":"Acceleration", "timestamp":ts_acc, "valueX":acc_x, "valueY":acc_y, "valueZ":acc_z},
-                        {"name":"Magnetometer", "timestamp":ts_mag, "valueX":mag_x, "valueY":mag_y, "valueZ":mag_z},
-                        {"name":"Gyro", "timestamp":ts_gyro, "valueX":gyro_x, "valueY":gyro_y, "valueZ":gyro_z}
+                        {"name":"Acceleration", "timestamp":ts_acc, "valueX":sensorData.acc.acc_x, "valueY":sensorData.acc.acc_y, "valueZ":sensorData.acc.acc_z},
+                        {"name":"Magnetometer", "timestamp":ts_mag, "valueX":sensorData.mag.mag_x, "valueY":sensorData.mag.mag_y, "valueZ":sensorData.mag.mag_z},
+                        {"name":"Gyro", "timestamp":ts_gyro, "valueX":sensorData.gyro.gyro_x, "valueY":gyro_y, "valueZ":gyro_z}
                     ]
                 }
 
