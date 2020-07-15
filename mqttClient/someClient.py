@@ -3,6 +3,10 @@ from time import sleep
 
 import random as rd
 
+from dataStruct import DataStruct
+
+ds = DataStruct()
+
 
 # creates a MQTT Client
 
