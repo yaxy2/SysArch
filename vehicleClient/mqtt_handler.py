@@ -7,7 +7,7 @@ from dataStruct import DataStruct
 from json_handler import JSONDumper
 
 ds = DataStruct()
-
+jsondump = JSONDumper()
 
 # creates a MQTT Client
 
@@ -32,8 +32,7 @@ client.loop_start()
 
 while True:
     sleep(1)
-    print(temperature)
-    ds.getData()
-    client.publish("/SysArch/V1/someTest", JSONDumper.generate_json(ds))
+    ds.get_data()
+    client.publish("/SysArch/V1/sensor", jsondump.generate_json(ds))
 
 client.loop_stop()

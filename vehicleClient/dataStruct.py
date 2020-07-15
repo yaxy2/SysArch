@@ -32,7 +32,7 @@ class DataStruct:
   def get_data(self):
     imu = AltIMU()
     imu.enable_temperature()
-    self.temperature = imu.getTemperatureCelsius())
+    self.temperature = imu.getTemperatureCelsius()
 
     imu = LSM6DS33()  # Accelerometer and Gyroscope
     imu.enable()

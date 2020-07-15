@@ -54,7 +54,7 @@ class JSONDumper:
                         {"name":"SteeringAngle","timestamp":ts, "value":sensordata.steering_angle},
                         {"name":"Temperature", "timestamp":ts, "value":sensordata.temperature},
                         {"name":"Speed", "timestamp":ts, "value":sensordata.speed},
-                        {"name":"Altimeter", "timestamp":ts, "value":sensordata.altimeter}
+                        {"name":"Altimeter", "timestamp":ts, "value":sensordata.alti}
                     ],
 
                     "SensorValue3": [
@@ -64,4 +64,4 @@ class JSONDumper:
                     ]
                   }
     # Return as JSON
-    return json.dump(sensor_data)
+    return json.dumps(sensor_data)
