@@ -1,4 +1,4 @@
-public class dataStruct:
+public class DataStruct:
   
   lidar = 0
   humidity = 0
