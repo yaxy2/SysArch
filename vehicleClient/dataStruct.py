@@ -37,10 +37,10 @@ class DataStruct:
     imu = LSM6DS33()  # Accelerometer and Gyroscope
     imu.enable()
 
-    imu.setAccelerometerFullScale2G()
-    imu.setAccelerometerFullScale4G()
+  #  imu.setAccelerometerFullScale2G()
+  #  imu.setAccelerometerFullScale4G()
     imu.setAccelerometerFullScale8G()
-    imu.setAccelerometerFullScale16G()
+  #  imu.setAccelerometerFullScale16G()
 
     self.gyro = imu.getGyroscopeRaw()
     self.acc = imu.getAccelerometerRaw()

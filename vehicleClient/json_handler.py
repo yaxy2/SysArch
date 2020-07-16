@@ -27,7 +27,7 @@ from dataStruct import DataStruct
 
 # Dummy timestamp data
 
-ts = time.time()*1000
+ts = time.time()
 
 # ts_lidar = 2345634534566
 # ts_humidity = 533452345254
