@@ -42,8 +42,8 @@ class DataStruct:
     imu.setAccelerometerFullScale8G()
   #  imu.setAccelerometerFullScale16G()
 
-    self.gyro = imu.getGyroscopeRaw()
-    self.acc = imu.getAccelerometerRaw()
+    self.gyro = imu.getGyroscopeDPS()
+    self.acc = imu.getAccelerometerMPS2()
 
     magnet = LIS3MDL()  # Magnetometer
     magnet.enable()
