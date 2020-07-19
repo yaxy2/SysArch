@@ -1,5 +1,5 @@
 import json
-import time
+# import time
 from dataStruct import DataStruct
 
 
@@ -27,7 +27,7 @@ from dataStruct import DataStruct
 
 # Dummy timestamp data
 
-ts = time.time()
+#ts = time.time()
 
 # ts_lidar = 2345634534566
 # ts_humidity = 533452345254
@@ -49,18 +49,18 @@ class JSONDumper:
 
     sensor_data = {
                     "SensorValue1": [
-                        {"name":"LIDAR", "timestamp":ts, "value":sensordata.lidar},
-                        {"name":"Humidity", "timestamp":ts, "value":sensordata.humidity},
-                        {"name":"SteeringAngle","timestamp":ts, "value":sensordata.steering_angle},
-                        {"name":"Temperature", "timestamp":ts, "value":sensordata.temperature},
-                        {"name":"Speed", "timestamp":ts, "value":sensordata.speed},
-                        {"name":"Altimeter", "timestamp":ts, "value":sensordata.alti}
+                        {"name":"LIDAR", "timestamp":sensordata.ts, "value":sensordata.lidar},
+                        {"name":"Humidity", "timestamp":sensordata.ts, "value":sensordata.humidity},
+                        {"name":"SteeringAngle","timestamp":sensordata.ts, "value":sensordata.steering_angle},
+                        {"name":"Temperature", "timestamp":sensordata.ts, "value":sensordata.temperature},
+                        {"name":"Speed", "timestamp":sensordata.ts, "value":sensordata.speed},
+                        {"name":"Altimeter", "timestamp":sensordata.ts, "value":sensordata.alti}
                     ],
 
                     "SensorValue3": [
-                        {"name":"Acceleration", "timestamp":ts, "valueX":sensordata.acc[0], "valueY":sensordata.acc[1], "valueZ":sensordata.acc[2]},
-                        {"name":"Magnetometer", "timestamp":ts, "valueX":sensordata.mag[0], "valueY":sensordata.mag[1], "valueZ":sensordata.mag[2]},
-                        {"name":"Gyro", "timestamp":ts, "valueX":sensordata.gyro[0], "valueY":sensordata.gyro[1], "valueZ":sensordata.gyro[2]}
+                        {"name":"Acceleration", "timestamp":sensordata.ts, "valueX":sensordata.acc[0], "valueY":sensordata.acc[1], "valueZ":sensordata.acc[2]},
+                        {"name":"Magnetometer", "timestamp":sensordata.ts, "valueX":sensordata.mag[0], "valueY":sensordata.mag[1], "valueZ":sensordata.mag[2]},
+                        {"name":"Gyro", "timestamp":sensordata.ts, "valueX":sensordata.gyro[0], "valueY":sensordata.gyro[1], "valueZ":sensordata.gyro[2]}
                     ]
                   }
     # Return as JSON

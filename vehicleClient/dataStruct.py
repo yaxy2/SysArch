@@ -5,6 +5,8 @@ from altimu.altimu import AltIMU
 from altimu.lsm6ds33 import LSM6DS33
 from altimu.lis3mdl  import LIS3MDL
 from altimu.lps25h   import LPS25H
+import time
+import datetime
 
 class DataStruct:
   
@@ -17,6 +19,7 @@ class DataStruct:
   acc = [0, 0, 0]
   mag = [0, 0, 0]
   gyro = [0, 0, 0]
+  ts = 0
   
   # def __init__(self, lidar, humidity, steering_angle, temperature, speed, altimeter, acc, mag, gyro):
   #   self.lidar = lidar
@@ -53,6 +56,9 @@ class DataStruct:
     baro.enable()
 
     self.alti = baro.getAltitude()
+
+    epoch_time = time.time()
+    ts = datetime.datetime.fromtimestamp(epoch_time)
 
 
     pass
