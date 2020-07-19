@@ -20,6 +20,7 @@ class DataStruct:
   mag = [0, 0, 0]
   gyro = [0, 0, 0]
   ts = 0
+
   
   # def __init__(self, lidar, humidity, steering_angle, temperature, speed, altimeter, acc, mag, gyro):
   #   self.lidar = lidar
@@ -58,7 +59,7 @@ class DataStruct:
     self.alti = baro.getAltitude()
 
     epoch_time = time.time()
-    ts = datetime.datetime.fromtimestamp(epoch_time)
+    self.ts = str(datetime.datetime.fromtimestamp(epoch_time))
 
 
     pass
