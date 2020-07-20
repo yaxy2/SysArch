@@ -8,7 +8,7 @@ from altimu.lps25h   import LPS25H
 import time
 import datetime
 
-class DataStruct:
+class DataStructSensor:
   
   lidar = 0
   humidity = 0
@@ -33,7 +33,7 @@ class DataStruct:
   #   self.mag = mag
   #   self.gyro = gyro
 
-  def get_data(self):
+  def get_dataSensor(self):
     imu = AltIMU()
     imu.enable_temperature()
     self.temperature = imu.getTemperatureCelsius()
@@ -63,8 +63,23 @@ class DataStruct:
 
 
     pass
+  
+  
+class DataStructRFID:
+  tokenID = ""
+  login = False
+  ts = 0
+  
+  def get_dataRFID(self):
     
-   
+    # Lese RFID Chip den Token aus 
+  
+    # self.tokenID = ....
+  
+    epoch_time = time.time()
+    self.ts = str(datetime.datetime.fromtimestamp(epoch_time))  
+  
+    pass
   
   
   
