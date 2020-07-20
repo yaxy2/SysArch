@@ -33,7 +33,7 @@ class DataStructSensor:
   #   self.mag = mag
   #   self.gyro = gyro
 
-  def get_dataSensor(self):
+  def get_data(self):
     imu = AltIMU()
     imu.enable_temperature()
     self.temperature = imu.getTemperatureCelsius()
@@ -70,7 +70,7 @@ class DataStructRFID:
   login = False
   ts = 0
   
-  def get_dataRFID(self):
+  def get_data(self):
     
     # Lese RFID Chip den Token aus 
   
