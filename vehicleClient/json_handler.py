@@ -1,9 +1,6 @@
 import json
 # import time
-from dataStruct import DataStructSensor
-from dataStruct import DataStructRFID
-
-
+from dataStruct import *
 
 # Dummy data
 
