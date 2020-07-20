@@ -3,11 +3,10 @@ from time import sleep
 
 import random as rd
 
-from dataStruct import DataStructSensor
-from dataStruct import DataStructRFID
+from dataStruct import *
 from json_handler import JSONDumper
 
-dsRFID = DataStructRFID()
+ds = DataStructRFID()
 jsondump = JSONDumper()
 
 # creates a MQTT Client
@@ -36,7 +35,7 @@ while True:
     while True:
     # TODO Busy Waiting
 
-    dsRFID.get_data()
-    client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_RFID(dsRFID))
+    ds.get_data()
+    client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_RFID(ds))
 
 client.loop_stop()
