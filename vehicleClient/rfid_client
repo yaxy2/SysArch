@@ -3,7 +3,7 @@ from time import sleep
 
 import random as rd
 
-from dataStruct import *
+from dataStruct import DataStructRFID
 from json_handler import JSONDumper
 
 ds = DataStructRFID()
