@@ -7,12 +7,12 @@ from dataStruct import DataStructSensor
 from dataStruct import DataStructRFID
 from json_handler import JSONDumper
 
-dsS = DataStructSensor()
+dsRFID = DataStructRFID()
 jsondump = JSONDumper()
 
 # creates a MQTT Client
 
-client = mqtt.Client("Pi10AsAClient")
+client = mqtt.Client("Pi10AsARFIDClient")
 
 client.username_pw_set("V1","DE1")
 client.connect("localhost", 8884)
@@ -32,8 +32,11 @@ client.on_publish = on_publish
 client.loop_start()
 
 while True:
-    sleep(1)
-    dsS.get_data()
-    client.publish("/SysArch/V1/sensor", jsondump.generate_json(dsS))
+
+    while True:
+    # TODO Busy Waiting
+
+    dsRFID.get_data()
+    client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_RFID(dsRFID))
 
 client.loop_stop()
