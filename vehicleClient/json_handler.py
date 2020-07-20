@@ -1,6 +1,7 @@
 import json
 # import time
-from dataStruct import DataStruct
+from dataStruct import DataStructSensor
+from dataStruct import DataStructRFID
 
 
 
@@ -45,7 +46,28 @@ from dataStruct import DataStruct
 
 
 class JSONDumper:
-  def generate_json(self, sensordata):
+  def generate_json_from_sensor(self, sensordata):
+
+    sensor_data = {
+                    "SensorValue1": [
+                        {"name":"LIDAR", "timestamp":sensordata.ts, "value":sensordata.lidar},
+                        {"name":"Humidity", "timestamp":sensordata.ts, "value":sensordata.humidity},
+                        {"name":"SteeringAngle","timestamp":sensordata.ts, "value":sensordata.steering_angle},
+                        {"name":"Temperature", "timestamp":sensordata.ts, "value":sensordata.temperature},
+                        {"name":"Speed", "timestamp":sensordata.ts, "value":sensordata.speed},
+                        {"name":"Altimeter", "timestamp":sensordata.ts, "value":sensordata.alti}
+                    ],
+
+                    "SensorValue3": [
+                        {"name":"Acceleration", "timestamp":sensordata.ts, "valueX":sensordata.acc[0], "valueY":sensordata.acc[1], "valueZ":sensordata.acc[2]},
+                        {"name":"Magnetometer", "timestamp":sensordata.ts, "valueX":sensordata.mag[0], "valueY":sensordata.mag[1], "valueZ":sensordata.mag[2]},
+                        {"name":"Gyro", "timestamp":sensordata.ts, "valueX":sensordata.gyro[0], "valueY":sensordata.gyro[1], "valueZ":sensordata.gyro[2]}
+                    ]
+                  }
+    # Return as JSON
+    return json.dumps(sensor_data)
+  
+  def generate_json_from_rfid(self, rfiddata):
 
     sensor_data = {
                     "SensorValue1": [
