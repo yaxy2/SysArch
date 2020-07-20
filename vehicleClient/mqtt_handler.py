@@ -3,10 +3,10 @@ from time import sleep
 
 import random as rd
 
-from dataStruct import DataStruct
+from dataStruct import DataStructSensor
 from json_handler import JSONDumper
 
-ds = DataStruct()
+ds = DataStructSensor()
 jsondump = JSONDumper()
 
 # creates a MQTT Client
