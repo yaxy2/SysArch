@@ -36,6 +36,6 @@ while True:
     # TODO Busy Waiting
 
     ds.get_data()
-    client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_RFID(ds))
+    client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_rfid(ds))
 
 client.loop_stop()
