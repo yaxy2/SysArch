@@ -8,7 +8,7 @@ from altimu.lps25h   import LPS25H
 import time
 import datetime
 import RPi.GPIO as GPIO
-import MFRC522
+from MFRC522.MFRC522 import *
 import signal
 
 class DataStructSensor:
