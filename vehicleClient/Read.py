@@ -25,14 +25,15 @@ import RPi.GPIO as GPIO
 from MFRC522.MFRC522 import *
 import signal
 
-# Create an object of the class MFRC522
-MIFAREReader = MFRC522()
 
 # Welcome message
 #print "Welcome to the MFRC522 data read example"
 #print "Press Ctrl-C to stop."
 
 def read():
+
+    # Create an object of the class MFRC522
+    MIFAREReader = MFRC522()
 
     text = ""
 
@@ -59,7 +60,7 @@ def read():
 
         # Check if authenticated
         if status == MIFAREReader.MI_OK:
-            while text == "null":
+            while text != "SysArch_Vehicle1":
                 data = MIFAREReader.MFRC522_Read(8)
                 MIFAREReader.MFRC522_StopCrypto1()
                 text = "".join(chr(x) for x in data)
