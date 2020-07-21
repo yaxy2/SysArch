@@ -48,6 +48,10 @@ def read(x):
             MIFAREReader.MFRC522_Read(8)
             MIFAREReader.MFRC522_StopCrypto1()
 
-    x = str(uid[0])+str(uid[1])+str(uid[2])+str(uid[3])
+    if status == MIFAREReader.MI_OK:
+        x = str(uid[0])+str(uid[1])+str(uid[2])+str(uid[3])
+    else:
+        x = 0
+
     return x 
 
