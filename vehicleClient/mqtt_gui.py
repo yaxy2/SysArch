@@ -15,7 +15,7 @@ def initGUI():
     global window
     window = Tk()
     window.title("MQTT Broker")
-    window.geometry("680x300")
+    window.geometry("750x300")
     window.configure(background="white")
 
     #################
