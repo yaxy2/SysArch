@@ -78,10 +78,13 @@ class DataStructRFID:
   
   def get_data(self):
     
+    # Hook the SIGINT
+    signal.signal(signal.SIGINT, end_read)
+
      # Lese RFID Chip den Token aus 
     rfidReader = MFRC522.MFRC522()
-    (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
-    (status,uid) = MIFAREReader.MFRC522_Anticoll()
+    (status,TagType) = rfidReader.MFRC522_Request(rfidReader.PICC_REQIDL)
+    (status,uid) = rfidReader.MFRC522_Anticoll()
     self.tokenID = (uid[0]+uid[1]+uid[2]+uid[3])
   
     epoch_time = time.time()
