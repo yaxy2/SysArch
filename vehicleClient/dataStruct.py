@@ -7,6 +7,9 @@ from altimu.lis3mdl  import LIS3MDL
 from altimu.lps25h   import LPS25H
 import time
 import datetime
+import RPi.GPIO as GPIO
+import MFRC522
+import signal
 
 class DataStructSensor:
   
@@ -75,9 +78,11 @@ class DataStructRFID:
   
   def get_data(self):
     
-    # Lese RFID Chip den Token aus 
-  
-    # self.tokenID = ....
+     # Lese RFID Chip den Token aus 
+    rfidReader = MFRC522.MFRC522()
+    (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
+    (status,uid) = MIFAREReader.MFRC522_Anticoll()
+    self.tokenID = (uid[0]+uid[1]+uid[2]+uid[3])
   
     epoch_time = time.time()
     self.ts = str(datetime.datetime.fromtimestamp(epoch_time))  
