@@ -20,7 +20,8 @@ class DataStructSensor:
   mag = [0, 0, 0]
   gyro = [0, 0, 0]
   ts = 0
-
+  abs_acc = 0
+  
   
   # def __init__(self, lidar, humidity, steering_angle, temperature, speed, altimeter, acc, mag, gyro):
   #   self.lidar = lidar
@@ -49,6 +50,9 @@ class DataStructSensor:
     self.gyro = imu.getGyroscopeDPS()
     self.acc = imu.getAccelerometerMPS2()
 
+    # Calculation for Speed
+    self.abs_acc = (abs(self.acc[0])+abs(self.acc[1])+abs(self.acc[2])-9.81)
+
     magnet = LIS3MDL()  # Magnetometer
     magnet.enable()
     self.mag = magnet.getMagnetometerRaw()
@@ -60,7 +64,6 @@ class DataStructSensor:
 
     epoch_time = time.time()
     self.ts = str(datetime.datetime.fromtimestamp(epoch_time))
-
 
     pass
   
@@ -78,7 +81,7 @@ class DataStructRFID:
   
     epoch_time = time.time()
     self.ts = str(datetime.datetime.fromtimestamp(epoch_time))  
-  
+
     pass
   
   

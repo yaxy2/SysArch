@@ -14,7 +14,7 @@ jsondump = JSONDumper()
 client = mqtt.Client("Pi10AsARFIDClient")
 
 client.username_pw_set("V1","DE1")
-client.connect("localhost", 8884)
+client.connect("localhost",8884)
 
 # print("Status connected")
 
@@ -32,9 +32,7 @@ client.loop_start()
 
 while True:
 
-    while True:
-    # TODO Busy Waiting
-
+    sleep(10)
     ds.get_data()
     client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_rfid(ds))
 

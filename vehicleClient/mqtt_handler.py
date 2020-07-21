@@ -33,6 +33,6 @@ client.loop_start()
 while True:
     sleep(1)
     ds.get_data()
-    client.publish("/SysArch/V1/sensor", jsondump.generate_json(ds))
+    client.publish("/SysArch/V1/sensor", jsondump.generate_json_from_sensor(ds))
 
 client.loop_stop()

@@ -51,7 +51,7 @@ class JSONDumper:
                         {"name":"Humidity", "timestamp":sensordata.ts, "value":sensordata.humidity},
                         {"name":"SteeringAngle","timestamp":sensordata.ts, "value":sensordata.steering_angle},
                         {"name":"Temperature", "timestamp":sensordata.ts, "value":sensordata.temperature},
-                        {"name":"Speed", "timestamp":sensordata.ts, "value":sensordata.speed},
+                        {"name":"Speed", "timestamp":sensordata.ts, "value":sensordata.abs_acc},
                         {"name":"Altimeter", "timestamp":sensordata.ts, "value":sensordata.alti}
                     ],
 
