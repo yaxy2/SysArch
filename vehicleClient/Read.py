@@ -2,7 +2,6 @@
 
 import RPi.GPIO as GPIO
 from MFRC522.MFRC522 import *
-import MFRC522
 import signal
 
 continue_reading = True
@@ -46,7 +45,7 @@ while continue_reading:
         print ("Card detected")
 
         # Get the UID of the card
-        (status, uid) = MIFAREReader.MFRC522_SelectTagSN()
+        (status, uid) = MIFAREReader.MFRC522_Anticoll()
         # If we have the UID, continue
         if status == MIFAREReader.MI_OK:
             print("Card read UID: %s" % uidToString(uid))
