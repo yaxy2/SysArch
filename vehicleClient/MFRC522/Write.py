@@ -74,7 +74,7 @@ while continue_reading:
 
             # Variable for the data to write
             # ASCII code for "Vehicle1"	
-            data = [83, 121, 115, 65, 114, 99, 104, 127, 86, 101, 104, 105, 99, 108, 101, 49]
+            data = [83, 121, 115, 65, 114, 99, 104, 95, 86, 101, 104, 105, 99, 108, 101, 49]
 
             # Fill the data with 0xFF
             for x in range(0,16):
