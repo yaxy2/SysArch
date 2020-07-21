@@ -37,34 +37,36 @@ def read():
 
     text = ""
 
-    # Scan for cards    
-    (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
-  
-    # Get the UID of the card
-    (status,uid) = MIFAREReader.MFRC522_Anticoll()
+    while status != MIFAREReader.MI_OK:
 
-    # If we have the UID, continue
-    if status == MIFAREReader.MI_OK:
+        # Scan for cards    
+        (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
 
-        # Print UID
-        #print "Card read UID: %s,%s,%s,%s" % (uid[0], uid[1], uid[2], uid[3])
-    
-        # This is the default key for authentication
-        key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
-        
-        # Select the scanned tag
-        MIFAREReader.MFRC522_SelectTag(uid)
+        # Get the UID of the card
+        (status,uid) = MIFAREReader.MFRC522_Anticoll()
 
-        # Authenticate
-        status = MIFAREReader.MFRC522_Auth(MIFAREReader.PICC_AUTHENT1A, 8, key, uid)
-
-        # Check if authenticated
+        # If we have the UID, continue
         if status == MIFAREReader.MI_OK:
-            while text != "SysArch_Vehicle1":
-                data = MIFAREReader.MFRC522_Read(8)
-                MIFAREReader.MFRC522_StopCrypto1()
-                text = "".join(chr(x) for x in data)
-            return text
-        else:
-            print "Authentication error"
+
+            # Print UID
+            #print "Card read UID: %s,%s,%s,%s" % (uid[0], uid[1], uid[2], uid[3])
+    
+            # This is the default key for authentication
+            key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
+        
+            # Select the scanned tag
+            MIFAREReader.MFRC522_SelectTag(uid)
+
+            # Authenticate
+            status = MIFAREReader.MFRC522_Auth(MIFAREReader.PICC_AUTHENT1A, 8, key, uid)
+
+            # Check if authenticated
+            if status == MIFAREReader.MI_OK:
+                while text != "SysArch_Vehicle1":
+                    data = MIFAREReader.MFRC522_Read(8)
+                    MIFAREReader.MFRC522_StopCrypto1()
+                    text = "".join(chr(x) for x in data)
+                return text
+            else:
+                print "Authentication error"
 
