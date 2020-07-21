@@ -14,7 +14,7 @@ def initGUI():
     # initialize window
     global window
     window = Tk()
-    window.title("MQTT Broker")
+    window.title("Vehicle Interface")
     window.geometry("700x300")
     window.configure(background="white")
 
@@ -25,10 +25,10 @@ def initGUI():
     bottom_frame = Frame(window, width=50, height=50, padx=10, pady=10)
 
     # define frame structure and position (grid)
-    left_frame.grid(row=0, column=0, sticky="nsew")
+    left_frame.grid(row=0, column=0, rowspan=2, sticky="nsew")
     middle_frame.grid(row=0, column=1, sticky="nsew")
     right_frame.grid(row=0, column=2, sticky="nsew")
-    bottom_frame.grid(row=1, column=0, columnspan=3, sticky="nsew")
+    bottom_frame.grid(row=1, column=1, columnspan=2, sticky="nsew")
 
     # define left text frame
     global display
@@ -118,5 +118,6 @@ userLogin(full_name, user_name, token_id)
 
 # update dynamic labels
 updateData(speed, temp, st_angle, alt)
+
 
 window.mainloop()
