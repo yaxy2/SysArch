@@ -1,9 +1,6 @@
 import paho.mqtt.client as mqtt
 from time import sleep
 
-ds = DataStructRFID_Response()
-jsondump = JSONDumper()
-
 client = mqtt.Client("Pi10AsARFIDResponse")
 
 username = "V1"
