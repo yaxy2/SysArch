@@ -32,7 +32,7 @@ client.loop_start()
 
 while True:
 
-    sleep(10)
+    sleep(1)
     ds.get_data()
     client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_rfid(ds))
 
