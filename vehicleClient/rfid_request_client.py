@@ -34,6 +34,14 @@ while True:
 
     sleep(10)
     ds.get_data()
-    client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_rfid(ds))
-
+    if(!th.checkempty):
+	if(th.getToken==ds.tokenID):
+		ds.login=false
+    		client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_rfid(ds))
+	else:
+		print("car is in use")
+    else:
+	ds.login=true
+	client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_rfid(ds))
+	
 client.loop_stop()
