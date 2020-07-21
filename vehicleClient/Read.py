@@ -5,7 +5,7 @@ from MFRC522.MFRC522 import *
 import signal
 
 
-def read:
+def read():
 
     continue_reading = True
 
@@ -20,7 +20,7 @@ def read:
     signal.signal(signal.SIGINT, end_read)
 
     # Create an object of the class MFRC522
-    MIFAREReader = MFRC522.MFRC522()
+    MIFAREReader = MFRC522()
 
     # This loop keeps checking for chips. If one is near it will get the UID and authenticate
     while continue_reading:

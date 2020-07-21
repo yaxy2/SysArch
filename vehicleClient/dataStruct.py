@@ -9,7 +9,7 @@ import time
 import datetime
 import RPi.GPIO as GPIO
 from MFRC522.MFRC522 import *
-from Read import file
+from Read import read
 
 class DataStructSensor:
   
