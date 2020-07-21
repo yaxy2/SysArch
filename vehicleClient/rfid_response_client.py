@@ -1,5 +1,6 @@
 import paho.mqtt.client as mqtt
 from time import sleep
+import json
 
 client = mqtt.Client("Pi10AsARFIDResponse")
 
@@ -16,13 +17,16 @@ def on_connect(client, userdata, flags, rc):
   
 def on_message(client, userdata, msg):
   print("Got Response\n")
-  s = msg.payload
-  
-  if(s["login"]==True):
-    print("%s : Login granted for %s with Username %s. Logged in with RFID Token %s" 
-        % (s["user"]["email"],s["user"]["fullName"],s["user"]["userName"],s["tokenID"]))
+  m_decode = str(msg.payload.decode("utf-8","ignore"))
+  print(type(m_decode))
+  print(m_decode)
+  m_in = json.loads(m_decode)
+  print(type(m_in))
+ 
+ #  print("%s : Login granted for %s with Username %s. Logged in with RFID Token %s" 
+ #  % (m_in["user"]["email"],m_in["user"]["fullName"],m_in["user"]["userName"],m_in["tokenID"]))
     
-    sleep(0.2)
+  sleep(0.2)
   
   
 client.username_pw_set(username, password=psw)
