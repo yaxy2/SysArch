@@ -33,6 +33,9 @@ MIFAREReader = MFRC522()
 #print "Press Ctrl-C to stop."
 
 def read():
+
+    text = ""
+
     # Scan for cards    
     (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
   
@@ -56,7 +59,7 @@ def read():
 
         # Check if authenticated
         if status == MIFAREReader.MI_OK:
-            while text == "null"
+            while text == "null":
                 data = MIFAREReader.MFRC522_Read(8)
                 MIFAREReader.MFRC522_StopCrypto1()
                 text = "".join(chr(x) for x in data)
