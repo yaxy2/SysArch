@@ -78,7 +78,7 @@ class DataStructRFID:
   
   def get_data(self):
     
-    read()
+    read(self.tokenID)
   
     epoch_time = time.time()
     self.ts = str(datetime.datetime.fromtimestamp(epoch_time))  
