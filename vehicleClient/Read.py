@@ -62,10 +62,10 @@ def read():
 
             # Check if authenticated
             if status == MIFAREReader.MI_OK:
-                while text != "SysArch_Vehicle1":
-                    data = MIFAREReader.MFRC522_Read(8)
-                    MIFAREReader.MFRC522_StopCrypto1()
-                    text = "".join(chr(x) for x in data)
+                
+                data = MIFAREReader.MFRC522_Read(8)
+                MIFAREReader.MFRC522_StopCrypto1()
+                text = "".join(chr(x) for x in data)
                 return text
                 break
             else:
