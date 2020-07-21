@@ -37,7 +37,7 @@ def read():
 
     text = ""
 
-    while status != MIFAREReader.MI_OK:
+    while True:
 
         # Scan for cards    
         (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
@@ -67,6 +67,7 @@ def read():
                     MIFAREReader.MFRC522_StopCrypto1()
                     text = "".join(chr(x) for x in data)
                 return text
+                break
             else:
                 print "Authentication error"
 
