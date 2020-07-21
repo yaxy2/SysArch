@@ -17,16 +17,22 @@ def on_connect(client, userdata, flags, rc):
   
 def on_message(client, userdata, msg):
   print("Got Response\n")
-  m_decode = str(msg.payload.decode("utf-8","ignore"))
-  print(type(m_decode))
-  print(m_decode)
-  m_in = json.loads(m_decode)
-  print(type(m_in))
- 
- #  print("%s : Login granted for %s with Username %s. Logged in with RFID Token %s" 
- #  % (m_in["user"]["email"],m_in["user"]["fullName"],m_in["user"]["userName"],m_in["tokenID"]))
+  
+  m_in = json.loads(msg.payload)
+  
+  if(m_in["certified"] and m_in["login"]==True):
     
-  sleep(0.2)
+    #Welcome Message
+    print("%s : Login granted for %s with Username %s. Logged in with RFID Token %s" 
+    % (m_in["user"]["email"],m_in["user"]["fullName"],m_in["user"]["userName"],m_in["tokenID"]))
+    
+    writeToken(str(m_in["tokenID"]))
+    
+ if(m_in["certified"] and m_in["login"]==False)
+    
+    deleteActualToken()
+    
+ sleep(0.2)
   
   
 client.username_pw_set(username, password=psw)
