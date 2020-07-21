@@ -11,10 +11,16 @@ jsondump = JSONDumper()
 
 # creates a MQTT Client
 
+adress = "localhost"
+port = 8884
+
+username = "V1"
+psw = "DE1"
+
 client = mqtt.Client("Pi10AsAClient")
 
-client.username_pw_set("V1","DE1")
-client.connect("localhost", 8884)
+client.username_pw_set(username,password=psw)
+client.connect(adress, port)
 
 # print("Status connected")
 
