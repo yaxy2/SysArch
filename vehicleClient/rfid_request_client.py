@@ -2,7 +2,7 @@ import paho.mqtt.client as mqtt
 from time import sleep
 
 import random as rd
-
+from tokenHandler import *
 from dataStruct import DataStructRFID
 from json_handler import JSONDumper
 
@@ -34,14 +34,14 @@ while True:
 
     sleep(10)
     ds.get_data()
-    if(!checkempty()):
+    if(not checkEmpty()):
 	if(getToken()==ds.tokenID):
-		ds.login=false
+		ds.login=False
     		client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_rfid(ds))
 	else:
 		print("car is in use")
     else:
-	ds.login=true
+	ds.login=True
 	client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_rfid(ds))
 	
 client.loop_stop()

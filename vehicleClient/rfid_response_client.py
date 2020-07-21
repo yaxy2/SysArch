@@ -1,6 +1,7 @@
 import paho.mqtt.client as mqtt
 from time import sleep
 import json
+from tokenHandler import *
 
 client = mqtt.Client("Pi10AsARFIDResponse")
 
@@ -20,7 +21,7 @@ def on_message(client, userdata, msg):
   
   m_in = json.loads(msg.payload)
   
-  if(m_in["certified"] and m_in["login"]==True):
+  if(m_in["certified"]==True and m_in["login"]==True):
     
     #Welcome Message
     print("%s : Login granted for %s with Username %s. Logged in with RFID Token %s" 
@@ -28,11 +29,13 @@ def on_message(client, userdata, msg):
     
     writeToken(str(m_in["tokenID"]))
     
- if(m_in["certified"] and m_in["login"]==False)
-    
-    deleteActualToken()
-    
- sleep(0.2)
+  elif((m_in["certified"]==True) and (m_in["login"]==False)):
+   print("User logged out")
+   deleteActualToken()
+  
+  else:
+   print("something went wrong. User may not be certified.")  
+  sleep(0.2)
   
   
 client.username_pw_set(username, password=psw)

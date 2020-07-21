@@ -26,17 +26,6 @@ class DataStructSensor:
   abs_acc = 0
   
   
-  # def __init__(self, lidar, humidity, steering_angle, temperature, speed, altimeter, acc, mag, gyro):
-  #   self.lidar = lidar
-  #   self.humidity = humidity
-  #   self.steering_angle = steering_angle
-  #   self.temperature = temperature
-  #   self.speed = speed
-  #   self.alti = alti
-  #   self.acc = acc
-  #   self.mag = mag
-  #   self.gyro = gyro
-
   def get_data(self):
     imu = AltIMU()
     imu.enable_temperature()
