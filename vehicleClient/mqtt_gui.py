@@ -1,14 +1,29 @@
 from tkinter import *
 
-# dummy data
-full_name = "Voller Name"
-user_name = "Cooler Username"
-token_id = "nasf8ouojfj"
+##################################
+# Test
+from mqtt_handler import ds
 
-speed = 68
-temp = 30
-st_angle = 12
-alt = 520
+#full_name = "Voller Name"
+#user_name = "Cooler Username"
+#token_id = "nasf8ouojfj"
+
+speed = ds.speed
+temp = 30 ds.temperature
+st_angle = ds.steering_angle
+alt = ds.alti
+
+###################################
+
+# dummy data
+#full_name = "Voller Name"
+#user_name = "Cooler Username"
+#token_id = "nasf8ouojfj"
+
+#speed = 68
+#temp = 30
+#st_angle = 12
+#alt = 520
 
 def initGUI():
     # initialize window
