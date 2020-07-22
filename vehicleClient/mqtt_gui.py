@@ -1,11 +1,15 @@
 from tkinter import *
+from dataStruct import DataStructSensor
+from time import sleep
+
+ds = DataStructSensor()
 
 # dummy data
 full_name = "John Doe"
 user_name = "jo851doe"
 token_id = "n1c3rf1d70k3n"
 
-speed = 68
+speed = 34
 temp = 30
 st_angle = 12
 alt = 520
@@ -19,7 +23,7 @@ def initGUI():
     window.configure(background="white")
 
     # define left, middle, center and bottom frame
-    left_frame = Frame(window, width=200, height=100, highlightbackground="black", highlightcolor="black", highlightthickness=10)
+    left_frame = Frame(window, width=150, height=100, highlightbackground="black", highlightcolor="black", highlightthickness=10)
     middle_frame = Frame(window, width=100, height=100, padx=10, pady=10)
     right_frame = Frame(window, width=300, height=100, padx=10, pady=10)
     bottom_frame = Frame(window, width=50, height=50, padx=10, pady=10)
@@ -32,7 +36,7 @@ def initGUI():
 
     # define left text frame
     global display
-    display = Text(left_frame, height="20", width="40", font=("Roboto", 10), fg="white", bg="black")
+    display = Text(left_frame, height="20", width="25", font=("Roboto", 10), fg="white", bg="black")
     display.pack(side="top", anchor="nw", fill="y", expand=1)
 
     # empty frame for style purposes
@@ -103,8 +107,8 @@ def updateData(speed, temp, st_angle, alt):
     steering_data.delete(1.0, END)
     alt_data.delete(1.0, END)
     speed_data.insert(END, str(speed) + " km/h\n")
-    temp_data.insert(END, str(temp) + " °C\n")
-    steering_data.insert(END, str(st_angle) + "°\n")
+    temp_data.insert(END, str(temp) + " C\n")
+    steering_data.insert(END, str(st_angle) + "\n")
     alt_data.insert(END, str(alt) + " m\n")
 
 #initialize GUI
@@ -117,7 +121,9 @@ userLogin(full_name, user_name, token_id)
 # userLogout()
 
 # update dynamic labels
-updateData(speed, temp, st_angle, alt)
-
+while True:
+    ds.get_data()
+    updateData(ds.speed, ds.temperature, ds.steering_angle, ds.alti)
+    sleep(1)
 
 window.mainloop()

@@ -32,7 +32,7 @@ client.loop_start()
 
 while True:
 
-    sleep(10)
+    
     ds.get_data()
     if(not checkEmpty()):
 	if(getToken()==ds.tokenID):
@@ -44,5 +44,8 @@ while True:
 	ds.login=True
 	print(ds.login)
 	client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_rfid(ds),qos=2)
+
+    sleep(10)
+
 	
 client.loop_stop()
