@@ -69,7 +69,7 @@ class JSONDumper:
     sensor_data = {
                   "timestamp":rfiddata.ts,
                   "tokenID":rfiddata.tokenID,
-                  "login":False
+                  "login":rfiddata.login
                   }
     
     
