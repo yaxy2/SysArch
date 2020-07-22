@@ -10,6 +10,7 @@ import datetime
 import RPi.GPIO as GPIO
 from MFRC522.MFRC522 import *
 from Read import read
+import random
 
 class DataStructSensor:
   
@@ -43,7 +44,7 @@ class DataStructSensor:
     self.acc = imu.getAccelerometerMPS2()
 
     # Calculation for Speed
-    self.abs_acc = (abs(self.acc[0])+abs(self.acc[1])+abs(self.acc[2])-9.81)
+    # self.abs_acc = (abs(self.acc[0])+abs(self.acc[1])+abs(self.acc[2])-9.81)
 
     magnet = LIS3MDL()  # Magnetometer
     magnet.enable()
@@ -52,8 +53,6 @@ class DataStructSensor:
     self.mag[1] = (((self.mag[1]) * 16) / 27368.0) * 100  # (4 guass scale) * (6842 LSB/guass at 4 guass scale)
     self.mag[2] = (((self.mag[2]) * 16) / 27368.0) * 100  # (4 guass scale) * (6842 LSB/guass at 4 guass scale)
 
-
-
     baro = LPS25H()  # Barometric and Temperature
     baro.enable()
 
@@ -61,6 +60,12 @@ class DataStructSensor:
 
     epoch_time = time.time()
     self.ts = str(datetime.datetime.fromtimestamp(epoch_time))
+
+    self.humidity = random.randomint(60,80)
+
+    self.steering_angle = random.randomint(0,45)
+
+    self.speed = random.randomint(0,100)
 
     pass
   
