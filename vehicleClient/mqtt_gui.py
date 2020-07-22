@@ -1,4 +1,5 @@
 from tkinter import *
+from time import sleep
 
 # dummy data
 #full_name = "John Doe"
@@ -30,10 +31,9 @@ class GUI:
         middle_frame.grid(row=0, column=1, sticky="nsew")
         right_frame.grid(row=0, column=2, sticky="nsew")
         bottom_frame.grid(row=1, column=1, columnspan=2, sticky="nsew")
-
         # define left text frame
         global display
-        display = Text(left_frame, height="20", width="40", font=("Roboto", 10), fg="white", bg="black")
+        display = Text(left_frame, height="20", width="25", font=("Roboto", 10), fg="white", bg="black")
         display.pack(side="top", anchor="nw", fill="y", expand=1)
 
         # empty frame for style purposes
@@ -72,7 +72,7 @@ class GUI:
         Label(middle_frame, text="Altitude: ", font=("Roboto", 12)).pack(side="top", anchor="w")
 
         # define logout button
-        logout_button = Button(bottom_frame, text="Logout", command=self.userLogout)
+        logout_button = Button(bottom_frame, text="Refresh", command=self.userLogout)
         logout_button.pack(side="bottom", anchor="se")
 
     # user login function for initial login text output on left label
@@ -84,26 +84,27 @@ class GUI:
                             "Token: " + token_id + "\n\n")
         display.insert(END, "Drive responsibly!\n")
 
-    def userLogout(self):
-        display.delete(1.0, END)
-        speed_data.delete(1.0, END)
-        temp_data.delete(1.0, END)
-        steering_data.delete(1.0, END)
-        alt_data.delete(1.0, END)
-        display.insert(END, "Bye Bye!\n\n")
-        display.insert(END, "Waiting for user...\n\n")
+
 
     # loop for updating dynamic labels
-    def updateData(self, speed, temp, st_angle, alt):
+    def updateData(self):
+        filepath = 'data.txt'
+        f = open(filepath, 'r')
         speed_data.delete(1.0, END)
         temp_data.delete(1.0, END)
         steering_data.delete(1.0, END)
         alt_data.delete(1.0, END)
-        speed_data.insert(END, str(speed) + " km/h\n")
-        temp_data.insert(END, str(temp) + " °C\n")
-        steering_data.insert(END, str(st_angle) + "°\n")
-        alt_data.insert(END, str(alt) + " m\n")
+        data = f.readlines()
+        speed_data.insert(END, str(data[0]) + " km/h\n")
+        temp_data.insert(END, str(data[1]) + " C\n")
+        steering_data.insert(END, str(data[2]) + "\n")
+        alt_data.insert(END, str(data[3]) + " m\n")
 
+
+    def userLogout(self):
+        self.updateData()
+        
+        
     def loop_forever(self):
         window.mainloop()
 
@@ -117,7 +118,9 @@ class GUI:
 # update dynamic labels
 #updateData(speed, temp, st_angle, alt)
 
-#gui = GUI()
-#gui.userLogin("Bernd Schneider", "Berndi", "geilesToken")
-#gui.updateData(34, 23, 12, 403)
-#gui.loop_forever()
+gui = GUI()
+gui.userLogin("Bernd Schneider", "Berndi", "geilesToken")
+
+gui.updateData()
+gui.loop_forever()
+

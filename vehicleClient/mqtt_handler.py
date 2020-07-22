@@ -6,10 +6,9 @@ import random as rd
 from dataStruct import DataStructSensor
 from json_handler import JSONDumper
 
-from mqtt_gui import *
-gui = GUI()
-gui.userLogin("Bernd Schneider", "Berndi", "geilesToken")
-gui.loop_forever()
+
+
+
 
 ds = DataStructSensor()
 jsondump = JSONDumper()
@@ -45,6 +44,9 @@ while True:
     sleep(1)
     ds.get_data()
     client.publish("/SysArch/V1/sensor", jsondump.generate_json_from_sensor(ds))
-    gui.updateData(ds.speed, ds.temperature, ds.steering_angle, ds.alti)
+    f = open('data.txt','w')
+    dataArray = [str(ds.speed)+"\n",str(ds.temperature)+"\n",str(ds.steering_angle)+"\n",str(ds.alti)+"\n"]
+    f.writelines(dataArray)
+    
 
 client.loop_stop()
