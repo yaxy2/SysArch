@@ -25,8 +25,6 @@ import RPi.GPIO as GPIO
 from MFRC522.MFRC522 import *
 import signal
 
-# Create an object of the class MFRC522
-MIFAREReader = MFRC522()
 
 # Welcome message
 #print "Welcome to the MFRC522 data read example"
@@ -34,36 +32,42 @@ MIFAREReader = MFRC522()
 
 def read():
 
+    # Create an object of the class MFRC522
+    MIFAREReader = MFRC522()
+
     text = ""
 
-    # Scan for cards    
-    (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
-  
-    # Get the UID of the card
-    (status,uid) = MIFAREReader.MFRC522_Anticoll()
+    while True:
 
-    # If we have the UID, continue
-    if status == MIFAREReader.MI_OK:
+        # Scan for cards    
+        (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
 
-        # Print UID
-        #print "Card read UID: %s,%s,%s,%s" % (uid[0], uid[1], uid[2], uid[3])
-    
-        # This is the default key for authentication
-        key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
-        
-        # Select the scanned tag
-        MIFAREReader.MFRC522_SelectTag(uid)
+        # Get the UID of the card
+        (status,uid) = MIFAREReader.MFRC522_Anticoll()
 
-        # Authenticate
-        status = MIFAREReader.MFRC522_Auth(MIFAREReader.PICC_AUTHENT1A, 8, key, uid)
-
-        # Check if authenticated
+        # If we have the UID, continue
         if status == MIFAREReader.MI_OK:
-            while text == "null":
+
+            # Print UID
+            #print "Card read UID: %s,%s,%s,%s" % (uid[0], uid[1], uid[2], uid[3])
+    
+            # This is the default key for authentication
+            key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
+        
+            # Select the scanned tag
+            MIFAREReader.MFRC522_SelectTag(uid)
+
+            # Authenticate
+            status = MIFAREReader.MFRC522_Auth(MIFAREReader.PICC_AUTHENT1A, 8, key, uid)
+
+            # Check if authenticated
+            if status == MIFAREReader.MI_OK:
+                
                 data = MIFAREReader.MFRC522_Read(8)
                 MIFAREReader.MFRC522_StopCrypto1()
                 text = "".join(chr(x) for x in data)
-            return text
-        else:
-            print "Authentication error"
+                return text
+                break
+            else:
+                print "Authentication error"
 
