@@ -117,7 +117,7 @@ class GUI:
 # update dynamic labels
 #updateData(speed, temp, st_angle, alt)
 
-gui = GUI()
-gui.userLogin("Bernd Schneider", "Berndi", "geilesToken")
-gui.updateData(34, 23, 12, 403)
-gui.loop_forever()
+#gui = GUI()
+#gui.userLogin("Bernd Schneider", "Berndi", "geilesToken")
+#gui.updateData(34, 23, 12, 403)
+#gui.loop_forever()
