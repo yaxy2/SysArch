@@ -47,7 +47,12 @@ class DataStructSensor:
 
     magnet = LIS3MDL()  # Magnetometer
     magnet.enable()
-    self.mag = ((magnet.getMagnetometerRaw() * 16) / 27368.0) * 100  # (4 guass scale) * (6842 LSB/guass at 4 guass scale)
+    self.mag = magnet.getMagnetometerRaw()
+    self.mag[0] = (((self.mag[0]) * 16) / 27368.0) * 100  # (4 guass scale) * (6842 LSB/guass at 4 guass scale)
+    self.mag[1] = (((self.mag[1]) * 16) / 27368.0) * 100  # (4 guass scale) * (6842 LSB/guass at 4 guass scale)
+    self.mag[2] = (((self.mag[2]) * 16) / 27368.0) * 100  # (4 guass scale) * (6842 LSB/guass at 4 guass scale)
+
+
 
     baro = LPS25H()  # Barometric and Temperature
     baro.enable()
