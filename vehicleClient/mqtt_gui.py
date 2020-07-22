@@ -1,9 +1,9 @@
 from tkinter import *
 
 # dummy data
-full_name = "Voller Name"
-user_name = "Cooler Username"
-token_id = "nasf8ouojfj"
+full_name = "John Doe"
+user_name = "jo851doe"
+token_id = "n1c3rf1d70k3n"
 
 speed = 68
 temp = 30
