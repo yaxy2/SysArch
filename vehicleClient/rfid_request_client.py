@@ -37,11 +37,11 @@ while True:
     if(not checkEmpty()):
 	if(getToken()==ds.tokenID):
 		ds.login=False
-    		client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_rfid(ds))
+    		client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_rfid(ds),qos=2)
 	else:
 		print("car is in use")
     else:
 	ds.login=True
-	client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_rfid(ds))
+	client.publish("/SysArch/V1/com2/web", jsondump.generate_json_from_rfid(ds),qos=2)
 	
 client.loop_stop()

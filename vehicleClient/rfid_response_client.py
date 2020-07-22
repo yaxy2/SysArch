@@ -44,5 +44,5 @@ client.connect(adress, port)
 client.on_connect = on_connect
 client.on_message = on_message
 
-client.subscribe("/SysArch/V1/com2/car")
+client.subscribe("/SysArch/V1/com2/car",qos=2)
 client.loop_forever()
