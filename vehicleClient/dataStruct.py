@@ -61,11 +61,11 @@ class DataStructSensor:
     epoch_time = time.time()
     self.ts = str(datetime.datetime.fromtimestamp(epoch_time))
 
-    self.humidity = random.randomint(60,80)
+    self.humidity = random.randint(60,80)
 
-    self.steering_angle = random.randomint(0,45)
+    self.steering_angle = random.randint(0,45)
 
-    self.speed = random.randomint(0,100)
+    self.speed = random.randint(0,100)
 
     pass
   
