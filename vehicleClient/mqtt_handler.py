@@ -18,8 +18,8 @@ jsondump = JSONDumper()
 adress = "localhost"
 port = 8884
 
-username = "V1"
-psw = "DE1"
+username = {inser_username}
+psw = {insert_password}
 
 client = mqtt.Client("Pi10AsAClient")
 
