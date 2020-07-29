@@ -5,8 +5,9 @@ from tokenHandler import *
 
 client = mqtt.Client("Pi10AsARFIDResponse")
 
-username = "V1"
-psw = "DE1"
+username = {insert_username}
+psw = {insert_password}
+
 adress = "localhost"
 port = 8884
 
