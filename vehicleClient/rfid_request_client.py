@@ -13,8 +13,8 @@ jsondump = JSONDumper()
 
 client = mqtt.Client("Pi10AsARFIDClient")
 
-username = insert_username
-psw = insert_psw
+username = {insert_username}
+psw = {insert_psw}
 
 client.username_pw_set(username,password=psw)
 client.connect("localhost",8884)
