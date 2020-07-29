@@ -13,7 +13,10 @@ jsondump = JSONDumper()
 
 client = mqtt.Client("Pi10AsARFIDClient")
 
-client.username_pw_set("V1","DE1")
+username = insert_username
+psw = insert_psw
+
+client.username_pw_set(username,password=psw)
 client.connect("localhost",8884)
 
 # print("Status connected")
